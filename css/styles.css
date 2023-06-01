@@ -9,6 +9,8 @@
     --border-header-color: #e7e9fc;
     --border-box-color: #8E8F99;
     --back-green-accent-color: #31D0AA;
+    --open-white-box: #FCFCFC;
+    --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
     color: var(--primary-text-color);
@@ -71,26 +73,47 @@ h3 {
     font-weight: 500;
     line-height: 1.5; 
     font-size: 16px;
+    transition: color var(--transition-dur-and-func);
 }
 .link:hover,
 .link:focus {
     color: var(--back-accent-color);
 }
-.link.current {
+/* .link.current {
     color: var(--back-accent-color);
+} */
+.current {
+    position: relative;
 }
+.current::after {
+    content: "";
+    position: absolute;
+    background-color: var(--back-accent-color);
+    border-radius: 2px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    margin-top: 24px;
+    transition: var(--back-accent-color);
 
+  
+
+}
 .site-nav {
     list-style: none;
     padding-top: 24px;
     display: flex;
     gap: 40px;
+   
 }
 
 .site-nav .link {
     display: block;
     padding-top: 24px;
     padding-bottom: 24px;
+    
 }
 
 
@@ -103,6 +126,7 @@ h3 {
     display: flex;
     gap: 40px;
     
+    
 }
 
 .auth-nav .item + .item {
@@ -112,7 +136,6 @@ margin-left: 40px;
 ul#auth-nav li {
     list-style: none;
     display: inline-block;
-    padding: 0;
     flex-grow: 0;
     letter-spacing: 0.02em;
     flex: none;
@@ -127,6 +150,7 @@ ul#auth-nav li {
     color: var(--primary-text-color);
     font-style: normal;
     line-height: 1.5;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .auth-link:hover,
@@ -150,6 +174,7 @@ ul#auth-nav li {
     font-family: 'Raleway', sans-serif;
     letter-spacing: 0.03em;
     margin-right: 76px;
+    
 }
 
 .logo-header {
@@ -164,6 +189,7 @@ ul#auth-nav li {
     text-transform: uppercase; 
     display: inline-block; 
     letter-spacing: 0.03em;
+    
 }
 /* main */
 .hero-page {
@@ -177,7 +203,7 @@ ul#auth-nav li {
     text-align: center;
     padding: 188px 0;
     margin: 0 auto;
-    
+    position: relative;
 }
 
 .hero-title {
@@ -209,7 +235,9 @@ ul#auth-nav li {
     margin: 0 auto;
     display: block; 
     border: none;
+    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func);   
 }
+
 .hero-button:hover,
 .hero-button:focus {
     color: var(--primary-white-color);
@@ -220,6 +248,9 @@ ul#auth-nav li {
     padding: 0;
     margin: 0;
  }
+
+
+/* Advantage */
 
 .advantage {
     
@@ -314,6 +345,7 @@ ul#auth-nav li {
 .team-soc-item {
     width: 40px;
     height: 40px;
+    
 }
 .team-soc-link {
     width: 100%;
@@ -323,6 +355,7 @@ ul#auth-nav li {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color var(--transition-dur-and-func);
     
 }
 .team-soc-icon {
@@ -350,11 +383,14 @@ ul#auth-nav li {
 .customer-item {
     width: calc((100% - 120px) / 6);
     Height: 88px;
+   
 }
 
 .customer-icon {
     fill: var(--border-box-color);
     fill: currentColor;
+    transition: fill var(--transition-dur-and-func);
+
 }
 
 .customer-link {
@@ -366,6 +402,7 @@ ul#auth-nav li {
     border: 1px solid var(--border-box-color);
     border-radius: 4px;
     color: var(--border-box-color);
+    transition: color 250ms var(--transition-dur-and-func),  border-color var(--transition-dur-and-func);
     
         
 }
@@ -441,16 +478,78 @@ ul#auth-nav li {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color var(--transition-dur-and-func);
     
 }
-.team-soc-icon {
+.team-soc-icon:hover,
+.team-soc-icon:focus {
     fill: var(--back-dark-color);
 }
 
 .team-soc-link-footer:hover,
-.team-soc-link-footer:focus{
+.team-soc-link-footer:focus{ 
     background-color: var(--back-green-accent-color);
 }
+/* Modal window */
+.backdrop {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity var(--transition-dur-and-func), visibility var(--transition-dur-and-func);
+ }
+ .backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+ }
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 408px;
+    height: 584px;
+    
+    background-color:var(--open-white-box);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+   
+}
+.modal-close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--border-header-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    transition: background-color var(--transition-dur-and-func);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+background-color: var(--back-accent-color);
+
+}
+.modal-close-btn-icon {
+    transition: fill var(--transition-dur-and-func);
+    }
+    
+.modal-close-btn:hover .modal-close-btn-icon,
+.modal-close-btn:focus .modal-close-btn-icon  { 
+    fill: var(--primary-white-color);
+} 
+
     
 /* Портфолио */
 .main-portfolio {
@@ -473,7 +572,8 @@ ul#auth-nav li {
     cursor: pointer;
     font-family: "Roboto", sans-serif;
     letter-spacing: 0.04e;
-    
+    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func), box-shadow var(--transition-dur-and-func);
+   
 }
 .button-portfolio:hover,
 .button-portfolio:focus {
@@ -526,8 +626,36 @@ ul#auth-nav li {
 }
 .activities-link {
     display: block;
+
 }
 .activities-link:hover,
 .activities-link:focus{
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+.activities-type-img{
+    position: relative;
+    overflow: hidden;
+
+}
+.overlay {
+  position: absolute;  
+  left: 0;
+  top: 0;
+  padding-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  color: #F4F4FD;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  transform: translate(0, 100%);
+  transition: transform var(--transition-dur-and-func);
+}
+.activities-link:hover .overlay,
+.activities-link:focus .overlay {
+    transform: translate(0, 0);  
 }
