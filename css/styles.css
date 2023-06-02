@@ -80,11 +80,11 @@ h3 {
 .link:focus {
     color: var(--back-accent-color);
 }
-/* .link.current {
-    color: var(--back-accent-color);
-} */
+
 .current {
     position: relative;
+    
+    
 }
 .current::after {
     content: '';
@@ -98,11 +98,18 @@ h3 {
     bottom: 0;
     margin-top: 24px;
     bottom: -1px;
-    transition: var(--back-accent-color);
-
-  
+    transition: color var(--transition-dur-and-func);
 
 }
+.site-link {
+    position: relative;
+    
+    
+} 
+.site-link.current {
+    color: var(--back-accent-color);
+}  
+
 .site-nav {
     list-style: none;
     padding-top: 24px;
@@ -404,7 +411,7 @@ ul#auth-nav li {
     border: 1px solid var(--border-box-color);
     border-radius: 4px;
     color: var(--border-box-color);
-    transition: color 250ms var(--transition-dur-and-func),  border-color var(--transition-dur-and-func);
+    transition: color var(--transition-dur-and-func),  border-color var(--transition-dur-and-func);
     
         
 }
@@ -537,13 +544,14 @@ ul#auth-nav li {
     height: 24px;
     padding: 0;
     cursor: pointer;
-    transition: background-color var(--transition-dur-and-func);
+    transition: background-color var(--transition-dur-and-func), border var(--transition-dur-and-func);
 }
 .modal-close-btn:hover,
 .modal-close-btn:focus {
 background-color: var(--back-accent-color);
-
+border: none; 
 }
+
 .modal-close-btn-icon {
     transition: fill var(--transition-dur-and-func);
     }
@@ -551,7 +559,7 @@ background-color: var(--back-accent-color);
 .modal-close-btn:hover .modal-close-btn-icon,
 .modal-close-btn:focus .modal-close-btn-icon  { 
     fill: var(--primary-white-color);
-    border: none; 
+    
 } 
 
     
@@ -646,9 +654,7 @@ background-color: var(--back-accent-color);
   position: absolute;  
   left: 0;
   top: 0;
-  padding-top: 40px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 40px 32px;
   width: 100%;
   height: 100%;
   background-color: var(--accent-color);
