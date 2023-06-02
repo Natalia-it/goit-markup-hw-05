@@ -142,7 +142,7 @@ ul#auth-nav li {
     margin-top: 24px;
     font-style: normal;
     color: var(--title-text-color);
-    font-style: normal;
+    
 }
 .auth-link {
     letter-spacing: 0.02em;
@@ -514,8 +514,7 @@ ul#auth-nav li {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 408px;
-    height: 584px;
-    
+    min-height: 584px; 
     background-color:var(--open-white-box);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
