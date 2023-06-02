@@ -67,7 +67,8 @@ h3 {
     box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08); 
 }
 .link {
-    color: var(--title-text-color);
+    position: relative;
+    color: var(--title-text-color); 
     letter-spacing: 0.02em;
     text-decoration: none;
     font-weight: 500;
@@ -86,7 +87,7 @@ h3 {
     position: relative;
 }
 .current::after {
-    content: "";
+    content: '';
     position: absolute;
     background-color: var(--back-accent-color);
     border-radius: 2px;
@@ -96,6 +97,7 @@ h3 {
     height: 4px;
     bottom: 0;
     margin-top: 24px;
+    bottom: -1px;
     transition: var(--back-accent-color);
 
   
@@ -235,7 +237,7 @@ ul#auth-nav li {
     margin: 0 auto;
     display: block; 
     border: none;
-    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func);   
+    transition: background-color var(--transition-dur-and-func);   
 }
 
 .hero-button:hover,
@@ -518,6 +520,7 @@ ul#auth-nav li {
     background-color:var(--open-white-box);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    transition: transform var(--transition-dur-and-func);
    
 }
 .modal-close-btn {
@@ -533,6 +536,7 @@ ul#auth-nav li {
     width: 24px;
     height: 24px;
     padding: 0;
+    cursor: pointer;
     transition: background-color var(--transition-dur-and-func);
 }
 .modal-close-btn:hover,
@@ -547,6 +551,7 @@ background-color: var(--back-accent-color);
 .modal-close-btn:hover .modal-close-btn-icon,
 .modal-close-btn:focus .modal-close-btn-icon  { 
     fill: var(--primary-white-color);
+    border: none; 
 } 
 
     
@@ -571,7 +576,7 @@ background-color: var(--back-accent-color);
     cursor: pointer;
     font-family: "Roboto", sans-serif;
     letter-spacing: 0.04e;
-    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func), box-shadow var(--transition-dur-and-func);
+    transition: color var(--transition-dur-and-func), background-color var(--transition-dur-and-func), box-shadow var(--transition-dur-and-func), border-color var(--transition-dur-and-func);
    
 }
 .button-portfolio:hover,
@@ -625,6 +630,7 @@ background-color: var(--back-accent-color);
 }
 .activities-link {
     display: block;
+    transition: box-shadow var(--transition-dur-and-func);
 
 }
 .activities-link:hover,
